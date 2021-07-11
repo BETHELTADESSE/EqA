@@ -29,3 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/application/authenticatio
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/application/equivalency', [
     ApplicationController::class, 'equi_index'])->name('equivalency.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->post('/application/authentication', [
+    ApplicationController::class, 'auth_store'])->name('authentication.store'); 
+
+    Route::middleware(['auth:sanctum', 'verified'])->post('/application/equivalency', [
+        ApplicationController::class, 'equi_store'])->name('equivalency.store');     

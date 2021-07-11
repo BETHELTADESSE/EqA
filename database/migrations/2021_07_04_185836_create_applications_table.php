@@ -17,7 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->integer('requestor_id')->references('id')->on('users');
             $table->string('applicant_first_name');
-            $table->string('applicant_second_name');
+            $table->string('applicant_middle_name');
             $table->string('applicant_last_name');
             $table->date('birthday');
             $table->integer('grade_level');

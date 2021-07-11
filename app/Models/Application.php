@@ -10,8 +10,9 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = [
+        'requestor_id',
         'applicant_first_name',
-        'applicant_second_name',
+        'applicant_middle_name',
         'applicant_last_name',
         'birthday',
         'grade_level',
@@ -22,6 +23,7 @@ class Application extends Model
         'zone',
         'address1',
         'address2',
+        'application_type',
         'postal_code'
     ];
 }
