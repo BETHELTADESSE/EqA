@@ -9,7 +9,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <form action="{{ route('authentication.store') }}"  method="POST"  enctype="multipart/form-data">
+            <form action="{{ route('equivalency.store') }}"  method="POST"  enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" value="{{ Auth::user()->id }}" name="requestor_id" placeholder=" ">
                                                     <fieldset class="form-group">
