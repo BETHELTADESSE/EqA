@@ -46,7 +46,7 @@ class ApplicationController extends Controller
     }
 
     public function equi_store(Request $request){
-        return ($request);
+        //return ($request);
         $application = Application::create([
             'requestor_id' => Auth::user()->id,
             'applicant_first_name' => $request->applicant_first_name,
