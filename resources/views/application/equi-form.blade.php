@@ -3,15 +3,20 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Equivalency Form') }}
         </h2>
-        
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <form action="{{ route('equivalency.store') }}"  method="POST"  enctype="multipart/form-data">
+    <div class="container row mt-5">
+        <div class="col-md-5">
+            <center>
+                {{ __('Enter Applicant Information.') }}
+            </center>
+        </div>
+        <div class="col-md-1"></div>    
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-md-6" >
+
+                                            <form class="p-3" action="{{ route('equivalency.store') }}"  method="POST"  enctype="multipart/form-data">
                                                 @csrf
-                                                <input type="hidden" value="{{ Auth::user()->id }}" name="requestor_id" placeholder=" ">
+                                                    <input type="hidden" value="{{ Auth::user()->id }}" name="requestor_id" placeholder=" ">
                                                     <fieldset class="form-group">
                                                         <label for="basicInput">First Name</label>
                                                         <input type="text" class="form-control" name="applicant_first_name" placeholder=" ">
@@ -40,10 +45,10 @@
                                                         </div>  
                                                     </section>
                                                     <fieldset class="form-group">
-                                                    <label for="basicInput">Country</label>
-                                                    <input type="text" class="form-control" name="country" placeholder=" ">
-                                                </fieldset>
-												<fieldset class="form-group">
+                                                        <label for="basicInput">Country</label>
+                                                        <input type="text" class="form-control" name="country" placeholder=" ">
+                                                    </fieldset>
+                                                    <fieldset class="form-group">
                                                     <label for="basicInput">State</label>
                                                     <input type="text" class="form-control" name="region" placeholder=" ">
                                                 </fieldset>
@@ -55,9 +60,7 @@
                                                     <label for="basicInput">Address Line2</label>
                                                     <input type="text" class="form-control" name="address2" placeholder="Optional">
                                                 </fieldset>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <fieldset class="form-group">
+                                                <fieldset class="form-group">
                                                         <label for="basicInput">guardian Name</label>
                                                         <input type="text" class="form-control" name="guardian_name" placeholder=" ">
                                                     </fieldset>
@@ -108,15 +111,14 @@
                                                             </div>
                                                         </fieldset>
                                                     </section> -->
-                                                    <input type="hidden" value="1" name="application_type">
-                                                </div>
+                                                    <input type="hidden" value="0" name="application_type">
                                                 <div class="col-12">
                                                     <div class="row justify-content-center">
                                                         <button type="submit" class="btn btn-lg btn-primary round m-1 w-auto">Submit</button>
                                                     </div>		
                                                 </div>
                                             </form>
-            </div>
+                                        
         </div>
     </div>
 </x-app-layout>

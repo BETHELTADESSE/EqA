@@ -3,16 +3,20 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Authentication Form') }}
         </h2>
-
-
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <form action="{{ route('authentication.store') }}"  method="POST"  enctype="multipart/form-data">
+    <div class="container row mt-5">
+        <div class="col-md-5">
+            <center>
+                {{ __('Enter Applicant Information.') }}
+            </center>
+        </div>
+        <div class="col-md-1"></div>    
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-md-6" >
+
+                                            <form class="p-3" action="{{ route('authentication.store') }}"  method="POST"  enctype="multipart/form-data">
                                                 @csrf
-                                                <input type="hidden" value="{{ Auth::user()->id }}" name="requestor_id" placeholder=" ">
+                                                    <input type="hidden" value="{{ Auth::user()->id }}" name="requestor_id" placeholder=" ">
                                                     <fieldset class="form-group">
                                                         <label for="basicInput">First Name</label>
                                                         <input type="text" class="form-control" name="applicant_first_name" placeholder=" ">
@@ -52,8 +56,6 @@
                                                         <label for="basicInput">Zone</label>
                                                         <input type="text" class="form-control" name="zone" placeholder=" Optional ">
                                                     </fieldset>
-                                                </div>
-                                                <div class="col-md-6">
                                                     <fieldset class="form-group">
                                                         <label for="basicInput">guardian Name</label>
                                                         <input type="text" class="form-control" name="guardian_name" placeholder=" ">
@@ -106,14 +108,13 @@
                                                         </fieldset>
                                                     </section> -->
                                                     <input type="hidden" value="0" name="application_type">
-                                                </div>
                                                 <div class="col-12">
                                                     <div class="row justify-content-center">
                                                         <button type="submit" class="btn btn-lg btn-primary round m-1 w-auto">Submit</button>
                                                     </div>		
                                                 </div>
                                             </form>
-                                                        </div>
+                                        
         </div>
     </div>
 </x-app-layout>
