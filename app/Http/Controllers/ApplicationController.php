@@ -24,7 +24,7 @@ class ApplicationController extends Controller
 
     public function auth_store(Request $request){
 
-        
+        //betty
         $application = Application::create([
             'requestor_id' => $request->requestor_id,
             'applicant_first_name' => $request->applicant_first_name,
