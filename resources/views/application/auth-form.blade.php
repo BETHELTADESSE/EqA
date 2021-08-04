@@ -74,39 +74,39 @@
                                                             <option value="Other relation">Other relation</option>
                                                         </select>
                                                     </fieldset>
-                                                    <!-- <section id="input-file-browser">
+                                                    <section id="input-file-browser">
                                                         <div class="mb-1">
                                                             <label class="documentInput">Upload Document</label>
                                                         </div>
                                                         <fieldset class="form-group">
                                                                 <label for="basicInputFile">Payment Reciept</label>
                                                                 <div class="custom-file">
-                                                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                                                    <label class="custom-file-label" for="inputGroupFile01">Reciept</label>
+                                                                    <input type="file" class="custom-file-input" name="Reciept" id="inputGroupFile01">
+                                                                    <label class="custom-file-label" for="inputGroupFile01"></label>
                                                                 </div>
                                                         </fieldset>
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">Transcript</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                                <input type="file" class="custom-file-input" name="Transcript" id="inputGroupFile01">
+                                                                <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">certificate</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                                <input type="file" class="custom-file-input" name="certificate"id="inputGroupFile01">
+                                                                <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">Other Document</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                                <input type="file" class="custom-file-input" name="other" id="inputGroupFile01">
+                                                                <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>
-                                                    </section> -->
+                                                    </section> 
                                                     <input type="hidden" value="0" name="application_type">
                                                 <div class="col-12">
                                                     <div class="row justify-content-center">

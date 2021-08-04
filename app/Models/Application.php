@@ -24,6 +24,10 @@ class Application extends Model
         'address1',
         'address2',
         'application_type',
-        'postal_code'
+        'postal_code',
+        'file_id'
     ];
+    public function file(){
+       $this->hasMany('App\File');
+    }
 }
