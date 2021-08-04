@@ -23,7 +23,7 @@ class ApplicationController extends Controller
     }
 
     public function auth_store(Request $request){
-//bety
+
         
         $application = Application::create([
             'requestor_id' => $request->requestor_id,
