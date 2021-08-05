@@ -88,21 +88,21 @@
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">Transcript</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="Transcript" id="inputGroupFile01">
-                                                                <label class="custom-file-label" for="inputGroupFile01"></label>
+                                                                <input type="file" name="Transcript" id="inputGroupFile02" accept="pdf/*"class="form-control-file">
+                                                                <label class="custom-file-label" for="inputGroupFile02"></label>
                                                             </div>
                                                         </fieldset>
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">certificate</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="certificate"id="inputGroupFile01">
+                                                                <input type="file" class="custom-file-input" name="Certificate"id="inputGroupFile03">
                                                                 <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">Other Document</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="other" id="inputGroupFile01">
+                                                                <input type="file" class="custom-file-input" name="Other_Doc" id="inputGroupFile04">
                                                                 <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>

@@ -24,12 +24,11 @@ class ApplicationController extends Controller
 
     public function auth_store(Request $request){
 
-        //betty
         $application = Application::create([
             'requestor_id' => $request->requestor_id,
             'applicant_first_name' => $request->applicant_first_name,
-            'applicant_middle_name' => $request->applicant_first_name,
-            'applicant_last_name' => $request->applicant_first_name,
+            'applicant_middle_name' => $request->applicant_middle_name,
+            'applicant_last_name' => $request->applicant_last_name,
             'grade_level'=> $request->grade_level,
             'birthday'=> $request->birthday,
             'country'=> $request->country,
@@ -37,7 +36,11 @@ class ApplicationController extends Controller
             'zone'=> $request->zone,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
-            'application_type'=>$request->application_type,  
+            'application_type'=>$request->application_type, 
+            'Reciept'=>$request->reciept,
+            'Transcript'=>$request->transcript,
+            'Certificate'=>$request->certificate,
+            'Other_Doc'=>$request->other_document
         ]);
 
         $application->save();
@@ -59,7 +62,11 @@ class ApplicationController extends Controller
             'zone'=> $request->zone,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
-            'application_type'=>$request->application_type  
+            'application_type'=>$request->application_type, 
+            'Reciept'=>$request->reciept,
+            'Transcript'=>$request->transcript,
+            'Certificate'=>$request->certificate,
+            'Other_Doc'=>$request->other_document 
         ]);
 
         $application->save();

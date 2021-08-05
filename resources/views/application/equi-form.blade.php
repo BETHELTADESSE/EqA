@@ -99,14 +99,14 @@
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">certificate</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input"name="certificate" id="inputGroupFile01">
+                                                                <input type="file" class="custom-file-input"name="Certificate" id="inputGroupFile01">
                                                                 <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>
                                                         <fieldset class="form-group">
                                                             <label for="basicInputFile">Other Document</label>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="other"id="inputGroupFile01">
+                                                                <input type="file" class="custom-file-input" name="Other_Doc"id="inputGroupFile01">
                                                                 <label class="custom-file-label" for="inputGroupFile01"></label>
                                                             </div>
                                                         </fieldset>
