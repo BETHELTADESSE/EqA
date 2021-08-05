@@ -30,6 +30,7 @@ class CreateApplicationsTable extends Migration
             $table->string('address2')->nullable();
             $table->string('postal_code')->nullable();
             $table->boolean('application_type');
+            $table->integer('file_id')->references('id')->on('files'); 
             $table->timestamps();
         });
     }
