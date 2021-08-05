@@ -58,8 +58,8 @@ class ApplicationController extends Controller
             'grade_level'=> $request->grade_level,
             'birthday'=> $request->birthday,
             'country'=> $request->country,
-            'region'=> $request->region,
-            'zone'=> $request->zone,
+            'address1'=> $request->address1,
+            'address2'=> $request->address2,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
             'application_type'=>$request->application_type, 
@@ -68,7 +68,26 @@ class ApplicationController extends Controller
             'Certificate'=>$request->certificate,
             'Other_Doc'=>$request->other_document 
         ]);
-
+    //   public function validator ()
+    //   {
+    //       return Validator ::make ($data,[
+    //           'firt_name' =>['required', 'string', 'max:255'],
+    //           'middle_name' =>['required', 'string','max:255'],
+    //           'last_name' => ['required', 'string','max:255'],
+    //           'grade_level'=> $['required', 'integer','max:11'],
+    //           'birthday'=> ['required', 'date'],
+    //           'country'=>['required', 'string','max:255'],
+    //           'region'=> $request->region,
+    //           'address_line1'
+    //           'guardian_name'=> $request->guardian_name,
+    //           'guardian_type'=> $request->guardian_type,
+    //           'application_type'=>$request->application_type, 
+    //           'Reciept'=>$request->reciept,
+    //           'Transcript'=>$request->transcript,
+    //           'Certificate'=>
+              
+    //           ])
+    //   }
         $application->save();
         
         return redirect('/dashboard');   
