@@ -30,7 +30,7 @@ class CreateApplicationsTable extends Migration
             $table->string('address2');
             $table->string('postal_code')->nullable();
             $table->boolean('application_type');
-            $table->string('recipt');
+            $table->string('reciept');
             $table->string('transcript');
             $table->string('certificate');
             $table->string('other_documents')->nullable();
