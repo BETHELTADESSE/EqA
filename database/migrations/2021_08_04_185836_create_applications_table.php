@@ -24,13 +24,16 @@ class CreateApplicationsTable extends Migration
             $table->string('guardian_name');
             $table->string('guardian_type');
             $table->string('country');
-            $table->string('region')->nullable();
+            $table->string('region');
             $table->string('zone')->nullable();
             $table->string('address1')->nullable();
-            $table->string('address2')->nullable();
+            $table->string('address2');
             $table->string('postal_code')->nullable();
             $table->boolean('application_type');
-            $table->integer('file_id')->references('id')->on('files'); 
+            $table->string('recipt');
+            $table->string('transcript');
+            $table->string('certificate');
+            $table->string('other_documents')->nullable();
             $table->timestamps();
         });
     }

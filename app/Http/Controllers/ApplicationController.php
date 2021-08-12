@@ -49,7 +49,7 @@ class ApplicationController extends Controller
     }
 
     public function equi_store(Request $request){
-        //return ($request);
+        return 'Done:' .$path;
         $application = Application::create([
             'requestor_id' => Auth::user()->id,
             'applicant_first_name' => $request->applicant_first_name,
@@ -63,31 +63,39 @@ class ApplicationController extends Controller
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
             'application_type'=>$request->application_type, 
-            'Reciept'=>$request->reciept,
-            'Transcript'=>$request->transcript,
-            'Certificate'=>$request->certificate,
-            'Other_Doc'=>$request->other_document 
+            $path = request()->file('Reciept')->store('reciepts'),
+            $path = request()->file('Transcript')->store('Transcripts'),
+            $path = request()->file('certificate')->store('certificates'),
+            $path = request()->file('other_document')->store('other_documents'),
+            // 'Certificate'=>$request->certificate,
+            // 'Other_Doc'=>$path=request()->other_document 
+        
         ]);
-    //   public function validator ()
-    //   {
-    //       return Validator ::make ($data,[
-    //           'firt_name' =>['required', 'string', 'max:255'],
-    //           'middle_name' =>['required', 'string','max:255'],
-    //           'last_name' => ['required', 'string','max:255'],
-    //           'grade_level'=> $['required', 'integer','max:11'],
-    //           'birthday'=> ['required', 'date'],
-    //           'country'=>['required', 'string','max:255'],
-    //           'region'=> $request->region,
-    //           'address_line1'
-    //           'guardian_name'=> $request->guardian_name,
-    //           'guardian_type'=> $request->guardian_type,
-    //           'application_type'=>$request->application_type, 
-    //           'Reciept'=>$request->reciept,
-    //           'Transcript'=>$request->transcript,
-    //           'Certificate'=>
-              
-    //           ])
-    //   }
+
+    
+        $attribute = request() ->validate ([
+           'firt_name' =>['required', 'string', 'max:255'],
+           'middle_name' =>['required', 'string','max:255'],
+           'last_name' => ['required', 'string','max:255'],
+           'grade_level'=>['required', 'integer','max:11'],
+           'birthday'=>['required', 'date'],
+           'country'=>['required', 'string','max:255'],
+           'region'=> ['required','string','max;255'],
+           'address_line1'=>['required','string','max:255'],
+           'guardian_name'=> ['required','string','max:255'],
+           'guardian_type'=>['required','string','max:255'],
+           'application_type'=>['required','string','max:255'],
+           'Reciept'=>'required|image',  
+           'Transcript'=>['required| file','pdf'],  
+           'Certificate'=>['required| file','pdf'],
+           'other_document'=>['required|file','pdf']
+        ]);
+        
+        $attributes['user_id'] = auth()->id();
+        $attributes['Reciept'] = request()-> file('recipt') -> store('recipts');
+
+        Post :: creat($attributes);
+
         $application->save();
         
         return redirect('/dashboard');   
