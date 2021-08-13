@@ -31,8 +31,8 @@ class Application extends Model
         'other_documents'
 
     ];
-    public function file(){
+    // public function file(){
 
-       $this->hasMany('App\File');
-    }
+    //    $this->hasMany('App\File');
+    // }
 }

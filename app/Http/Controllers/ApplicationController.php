@@ -55,7 +55,7 @@ class ApplicationController extends Controller
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Transcript')){
             $file = $request->file('Transcript');
-            $reciept_filename = $current_timestamp.$file->getClientOriginalName();
+            $transcript_filename = $current_timestamp.$file->getClientOriginalName();
             $file->storeAs('public/',$transcript_filename);
         }else
         {
@@ -65,7 +65,7 @@ class ApplicationController extends Controller
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Certificate')){
             $file = $request->file('Certificate');
-            $reciept_filename = $current_timestamp.$file->getClientOriginalName();
+            $certificate_filename = $current_timestamp.$file->getClientOriginalName();
             $file->storeAs('public/',$certificate_filename);
         }else
         {
@@ -75,11 +75,11 @@ class ApplicationController extends Controller
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Other_Doc')){
             $file = $request->file('Other_Doc');
-            $reciept_filename = $current_timestamp.$file->getClientOriginalName();
+            $other_doc_filename = $current_timestamp.$file->getClientOriginalName();
             $file->storeAs('public/',$other_doc_filename);
         }else
         {
-            $reciept_filename = "";
+            $other_doc_filename = "";
         }
         $application = Application::create([
             'requestor_id' => Auth::user()->id,
@@ -97,7 +97,7 @@ class ApplicationController extends Controller
             'recipt'=>$reciept_filename,
             'transcript'=>$transcript_filename,
             'certificate'=>$certificate_filename,
-            'other_doc'=>$other_document_filename
+            'other_doc'=>$other_doc_filename
         ]);
 
         $application->save();
@@ -165,7 +165,7 @@ class ApplicationController extends Controller
             'recipt'=>$reciept_filename,
             'transcript'=>$transcript_filename,
             'certificate'=>$certificate_filename,
-            'other_doc'=>$other_document_filename
+            'other_doc'=>$other_doc_filename
             // $path = request()->file('Reciept')->store('reciepts'),
             // $path = request()->file('Transcript')->store('Transcripts'),
             // $path = request()->file('Certificate')->store('certificates'),
