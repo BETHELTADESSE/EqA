@@ -23,26 +23,24 @@ class ApplicationController extends Controller
     }
 
     public function auth_store(Request $request){
-        // return $request->all();
 
-        // $application = Application::create([
-        //     'requestor_id' => $request->requestor_id,
-        //     'applicant_first_name' => $request->applicant_first_name,
-        //     'applicant_middle_name' => $request->applicant_middle_name,
-        //     'applicant_last_name' => $request->applicant_last_name,
-        //     'grade_level'=> $request->grade_level,
-        //     'birthday'=> $request->birthday,
-        //     'country'=> $request->country,
-        //     'region'=> $request->region,
-        //     'zone'=> $request->zone,
-        //     'guardian_name'=> $request->guardian_name,
-        //     'guardian_type'=> $request->guardian_type,
-        //     'application_type'=>$request->application_type, 
-        //     'Reciept'=>$request->reciept,
-        //     'Transcript'=>$request->transcript,
-        //     'Certificate'=>$request->certificate,
-        //     'Other_Doc'=>$request->other_document
-        // ]);
+        $validated = $request->validate([
+            'applicant_first_name' => 'required|string|max:255',
+            'applicant_middle_name' =>'required|string|max:255',
+            'applicant_last_name' => 'required|string|max:255',
+            'grade_level'=>'required|string|max:255',
+            'birthday'=>'required|date',
+            'country'=>'required|string|max:255',
+            'region'=>'required|string|max:255',
+            'zone'=>'required|string|max:255',
+            'guardian_name'=> 'required|string|max:255',
+            'guardian_type'=>'required|string|max:255',
+            'application_type'=>'required|string|max:255',
+            'Reciept'=>'required|image',  
+            'Transcript'=>'required|file',  
+            'Certificate'=>'required|file',
+        ]);
+      
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Reciept')){
             $file = $request->file('Reciept');
@@ -65,7 +63,7 @@ class ApplicationController extends Controller
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Certificate')){
             $file = $request->file('Certificate');
-            $certificate_filename = $current_timestamp.$file->getClientOriginalName();
+            $certificate_filename = $current_timestamp.'-'.$request->applicant_first_name.'-'.$request->applicant_middle_name.'.'.$file->extension();
             $file->storeAs('public/',$certificate_filename);
         }else
         {
@@ -84,8 +82,8 @@ class ApplicationController extends Controller
         $application = Application::create([
             'requestor_id' => Auth::user()->id,
             'applicant_first_name' => $request->applicant_first_name,
-            'applicant_middle_name' => $request->applicant_first_name,
-            'applicant_last_name' => $request->applicant_first_name,
+            'applicant_middle_name' => $request->applicant_middle_name,
+            'applicant_last_name' => $request->applicant_last_name,
             'grade_level'=> $request->grade_level,
             'birthday'=> $request->birthday,
             'country'=> $request->country,
@@ -93,8 +91,8 @@ class ApplicationController extends Controller
             'zone'=> $request->zone,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
-            'application_type'=>$request->application_type, 
             'recipt'=>$reciept_filename,
+            'application_type'=>$request->application_type, 
             'transcript'=>$transcript_filename,
             'certificate'=>$certificate_filename,
             'other_doc'=>$other_doc_filename
@@ -106,11 +104,26 @@ class ApplicationController extends Controller
     }
 
     public function equi_store(Request $request){
-        // return $request->all();
-        // TODO : CHECK if the files exist before uploading
-        // Example if($request->hasFile('image')){
-        //  upload here
-        // }
+
+        $validated = $request->validate([
+            'applicant_first_name' => 'required|string|max:255',
+            'applicant_middle_name' =>'required|string|max:255',
+            'applicant_last_name' => 'required|string|max:255',
+            'grade_level'=>'required|string|max:255',
+            'birthday'=>'required|date',
+            'country'=>'required|string|max:255',
+            'region'=>'required|string|max:255',
+            'address_line1'=>'required|string|max:255',
+            'address_line2'=>'required|string|max:255',
+            'guardian_name'=> 'required|string|max:255',
+            'guardian_type'=>'required|string|max:255',
+            'application_type'=>'required|string|max:255',
+            'Reciept'=>'required|image',  
+            'Transcript'=>'required|file',  
+            'Certificate'=>'required|file',
+            'other_document'=>'required|file',
+     ]);
+        
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Reciept')){
             $file = $request->file('Reciept');
@@ -126,6 +139,7 @@ class ApplicationController extends Controller
             $transcript_filename = $current_timestamp.$file->getClientOriginalName();
             $file->storeAs('public/',$transcript_filename);
         }else
+
         {
             $transcript_filename = "";
         }
@@ -134,10 +148,10 @@ class ApplicationController extends Controller
         if($request->hasFile('Certificate')){
             $file = $request->file('Certificate');
             $cerificate_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$certificate_filename);
+            $file->storeAs('public/',$Certificate_filename);
         }else
         {
-            $certificate_filename = "";
+            $Certificate_filename = "";
         }
         
         $current_timestamp = Carbon::now()->timestamp;
@@ -146,6 +160,7 @@ class ApplicationController extends Controller
             $other_doc_filename = $current_timestamp.$file->getClientOriginalName();
             $file->storeAs('public/',$other_doc_filename);
         }else
+       
         {
             $Other_doc_filename = "";
         }
@@ -157,8 +172,8 @@ class ApplicationController extends Controller
             'grade_level'=> $request->grade_level,
             'birthday'=> $request->birthday,
             'country'=> $request->country,
-            'address1'=> $request->address1,
-            'address2'=> $request->address2,
+            'address_line1'=> $request->address1,
+            'address_line2'=> $request->address2,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
             'application_type'=>$request->application_type, 
@@ -166,33 +181,9 @@ class ApplicationController extends Controller
             'transcript'=>$transcript_filename,
             'certificate'=>$certificate_filename,
             'other_doc'=>$other_doc_filename
-            // $path = request()->file('Reciept')->store('reciepts'),
-            // $path = request()->file('Transcript')->store('Transcripts'),
-            // $path = request()->file('Certificate')->store('certificates'),
-            // $path = request()->file('Other_Doc')->store('other_documents'),
-            // 'Certificate'=>$request->certificate,
-            // 'Other_Doc'=>$path=request()->other_document 
         
         ]);
 
-    
-       // $attribute = request() ->validate ([
-        //    'firt_name' => 'required|string|max:255',
-        //    'middle_name' =>'required|string|max:255',
-        //    'last_name' => 'required|string|max:255',
-        //    'grade_level'=>'required|string|max:255',
-        //    'birthday'=>'required|date',
-        //    'country'=>'required|string|max:255',
-        //    'region'=>'required|string|max:255',
-        //    'address_line1'=>'required|string|max:255',
-        //    'guardian_name'=> 'required|string|max:255',
-        //    'guardian_type'=>'required|string|max:255',
-        //    'application_type'=>'required|string|max:255',
-        //    'Reciept'=>'required|image',  
-        //    'Transcript'=>'required|file',  
-        //    'Certificate'=>'required|file',
-        //    'other_document'=>'required|file',
-       // ]);
         
         $attributes['user_id'] = auth()->id();
       //  $attributes['Reciept'] = request()-> file('recipt') -> store('recipts');

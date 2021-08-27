@@ -12,7 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        <!-- Logo
+        <img src="{{asset('images/moeLogo.png')}}"> -->
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
