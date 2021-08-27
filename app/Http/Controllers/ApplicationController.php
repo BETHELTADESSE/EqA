@@ -183,8 +183,7 @@ class ApplicationController extends Controller
             'other_doc'=>$other_doc_filename
         
         ]);
-
-        
+ 
         $attributes['user_id'] = auth()->id();
       //  $attributes['Reciept'] = request()-> file('recipt') -> store('recipts');
 
