@@ -14,7 +14,7 @@ class Application extends Model
         'applicant_first_name',
         'applicant_middle_name',
         'applicant_last_name',
-        'birthday',
+        'birthday'=>'date_format:M-D-Y|before:todat',
         'grade_level',
         'guardian_name',
         'guardian_type',

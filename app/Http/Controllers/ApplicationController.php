@@ -29,7 +29,7 @@ class ApplicationController extends Controller
             'applicant_middle_name' =>'required|string|max:255',
             'applicant_last_name' => 'required|string|max:255',
             'grade_level'=>'required|string|max:255',
-            'birthday'=>'required|date',
+            'birthday'=>'date_format:mm/dd/yyyy|before:today',
             'country'=>'required|string|max:255',
             'region'=>'required|string|max:255',
             // 'zone'=>'required|string|max:255',

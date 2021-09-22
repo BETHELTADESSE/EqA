@@ -18,6 +18,7 @@
                     <th scope="col">Guardian Name</th>
                     <th scope="col">Guardian Relationship</th>
                     <th scope="col">Address</th>
+                    <th scope="col">Applicant Documents</th>
                     <th scope="col">Application Progress</th>
                     </tr>
                 </thead>
@@ -48,6 +49,9 @@
                         </td>
                         <td>
                         {{ $application-> country}} {{ $application->region }} {{ $application->zone }}
+                        </td>
+                        <td>
+                        {{ $application-> recipt}} {{ $application->transcript}} {{ $application->certificate }} 
                         </td>
                         <td>
                             0%
