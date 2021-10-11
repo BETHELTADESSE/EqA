@@ -29,7 +29,7 @@ class ApplicationController extends Controller
             'applicant_middle_name' =>'required|string|max:255',
             'applicant_last_name' => 'required|string|max:255',
             'grade_level'=>'required|string|max:255',
-            'birthday'=>'date_format:mm/dd/yyyy|before:today',
+            'birthday'=>'required|before:today',
             'country'=>'required|string|max:255',
             'region'=>'required|string|max:255',
             // 'zone'=>'required|string|max:255',
@@ -45,7 +45,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Reciept')){
             $file = $request->file('Reciept');
             $reciept_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$reciept_filename);
+            $file->storeAs('public/'.Auth::user()->id.'/',$applicant_first_name);
         }else
         {
             $reciept_filename = "";
@@ -54,7 +54,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Transcript')){
             $file = $request->file('Transcript');
             $transcript_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$transcript_filename);
+            $file->storeAs('public/'.Auth::user()->id.'/',$transcript_filename);
         }else
         {
             $transcript_filename = "";
@@ -63,8 +63,8 @@ class ApplicationController extends Controller
         $current_timestamp = Carbon::now()->timestamp;
         if($request->hasFile('Certificate')){
             $file = $request->file('Certificate');
-            $certificate_filename = $current_timestamp.'-'.$request->applicant_first_name.'-'.$request->applicant_middle_name.'.'.$file->extension();
-            $file->storeAs('public/',$certificate_filename);
+            $certificate_filename =$current_timestamp.$file->getClientOriginalName();
+            $file->storeAs('public/'.Auth::user()->id.'/',$certificate_filename);
         }else
         {
             $certificate_filename = "";
@@ -74,7 +74,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Other_Doc')){
             $file = $request->file('Other_Doc');
             $other_doc_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$other_doc_filename);
+            $file->storeAs('public/'.Auth::user()->id.'/',$other_doc_filename);
         }else
         {
             $other_doc_filename = "";
@@ -89,13 +89,16 @@ class ApplicationController extends Controller
             'country'=> $request->country,
             'region'=> $request->region,
             'zone'=> $request->zone,
+            'address1'=>0,
+            'address2'=>0,
+            'postal_code'=>0,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
-            'recipt'=>$reciept_filename,
+            'reciept'=>$reciept_filename,
             'application_type'=>$request->application_type, 
             'transcript'=>$transcript_filename,
             'certificate'=>$certificate_filename,
-            'other_doc'=>$other_doc_filename
+            'other_documents'=>$other_doc_filename
         ]);
 
         $application->save();
@@ -113,7 +116,7 @@ class ApplicationController extends Controller
             'birthday'=>'required|date',
             'country'=>'required|string|max:255',
             'region'=>'required|string|max:255',
-            'address_line1'=>'required|string|max:255',
+            'address1'=>'required|string|max:255',
             // 'address_line2'=>'required|string|max:255',
             'guardian_name'=> 'required|string|max:255',
             'guardian_type'=>'required|string|max:255',
@@ -128,7 +131,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Reciept')){
             $file = $request->file('Reciept');
             $reciept_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$reciept_filename);
+            $file->storeAs('public/'.Auth::user()->id.'/',$reciept_filename);
         }else
         {
             $reciept_filename = "";
@@ -137,7 +140,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Transcript')){
             $file = $request->file('Transcript');
             $transcript_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$transcript_filename);
+            $file->storeAs('public/'.Auth::user()->id.'/',$transcript_filename);
         }else
 
         {
@@ -148,7 +151,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Certificate')){
             $file = $request->file('Certificate');
             $cerificate_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$Certificate_filename);
+            $file->storeAs('public/'.Auth::user()->id.'/',$Certificate_filename);
         }else
         {
             $Certificate_filename = "";
@@ -158,7 +161,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Other_Doc')){
             $file = $request->file('Other_Doc');
             $other_doc_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/',$other_doc_filename);
+            $file->storeAs('public/user',$other_doc_filename);
         }else
        
         {
@@ -172,12 +175,12 @@ class ApplicationController extends Controller
             'grade_level'=> $request->grade_level,
             'birthday'=> $request->birthday,
             'country'=> $request->country,
-            'address_line1'=> $request->address1,
-            'address_line2'=> $request->address2,
+            'address1'=> $request->address1,
+            'address2'=> $request->address2,
             'guardian_name'=> $request->guardian_name,
             'guardian_type'=> $request->guardian_type,
             'application_type'=>$request->application_type, 
-            'recipt'=>$reciept_filename,
+            'reciept'=>$reciept_filename,
             'transcript'=>$transcript_filename,
             'certificate'=>$certificate_filename,
             'other_doc'=>$other_doc_filename

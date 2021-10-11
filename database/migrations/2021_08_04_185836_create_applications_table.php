@@ -26,8 +26,8 @@ class CreateApplicationsTable extends Migration
             $table->string('country');
             $table->string('region');
             $table->string('zone')->nullable();
-            $table->string('address1')->nullable();
-            $table->string('address2');
+            $table->string('address1');
+            $table->string('address2')->nullable();
             $table->string('postal_code')->nullable();
             $table->boolean('application_type');
             $table->string('reciept');

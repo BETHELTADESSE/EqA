@@ -14,7 +14,7 @@ class Application extends Model
         'applicant_first_name',
         'applicant_middle_name',
         'applicant_last_name',
-        'birthday'=>'date_format:M-D-Y|before:todat',
+        'birthday',
         'grade_level',
         'guardian_name',
         'guardian_type',
@@ -25,7 +25,7 @@ class Application extends Model
         'address2',
         'application_type',
         'postal_code',
-        'recipt',
+        'reciept',
         'transcript',
         'certificate',
         'other_documents'
