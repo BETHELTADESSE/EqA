@@ -50,8 +50,11 @@
                         <td>
                         {{ $application-> country}} {{ $application->region }} {{ $application->zone }}
                         </td>
-                        <td>
-                        {{ $application-> recipt}} {{ $application->transcript}} {{ $application->certificate }} 
+                        <td class="flex flex-col space-y-2">
+                        <span class="bg-green-200 px-2 py-1">
+                            <img src="/storage/{{ Auth::user()->id}}/{{ $application->reciept}}" alt="" srcset="" class="w-8 h-8"></span>
+                        <span class="bg-green-200 px-2 py-1">{{ $application->transcript}}</span>
+                        <span class="bg-green-200 px-2 py-1">{{ $application->certificate }} </span>  
                         </td>
                         <td>
                             0%

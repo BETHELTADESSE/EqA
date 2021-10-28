@@ -45,7 +45,7 @@ class ApplicationController extends Controller
         if($request->hasFile('Reciept')){
             $file = $request->file('Reciept');
             $reciept_filename = $current_timestamp.$file->getClientOriginalName();
-            $file->storeAs('public/'.Auth::user()->id.'/',$applicant_first_name);
+            $file->storeAs('public/'.Auth::user()->id.'/',$reciept_filename);
         }else
         {
             $reciept_filename = "";
